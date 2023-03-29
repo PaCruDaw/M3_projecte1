@@ -11,6 +11,24 @@ public class Alumne {
     private String lastName2; //second student's last name
     private float[] notes; //note vector
 
+    //constructor amb tots els parametres
+    public Alumne (String id, String classroom, String name, 
+        String lastName, String lastName2, float[] notes) {
+
+            this.id = id;
+            this.classroom = classroom;
+            this.name = name;
+            this.lastName = lastName;
+            this.lastName2 = lastName2;
+            this.notes = notes.clone();
+    }
+
+    //constructor per defecte
+    public Alumne() {
+
+    }
+
+
     public void setId (String id) {
         this.id = id;
     }
