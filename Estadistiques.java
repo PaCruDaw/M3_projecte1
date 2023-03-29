@@ -3,8 +3,9 @@ public class Estadistiques {
     public static float suma (float[] v_entrada) {
         float suma_total = 0;
         for (int i = 0; i < v_entrada.length; i++) {
-            suma_total =+ v_entrada[i];
+            suma_total = suma_total + v_entrada[i];
         }
+        
         return suma_total;
     }
     
@@ -39,6 +40,11 @@ public class Estadistiques {
             }
         }
         return min_valor;
+    }
+
+    public static void main (String[] args) {
+        float[] vec = {5,5,7};
+        media(vec); 
     }
 
 }

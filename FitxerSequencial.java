@@ -15,14 +15,21 @@ class FitxerSequencial {
     static ArrayList<Alumne> alumnes = new ArrayList<Alumne>();
 
     public static void main(String[] args) {
-
         lleixirFitxer();
-
-
+        for (int i = 0; i < alumnes.size(); i++) {
+           float media = Estadistiques.media(alumnes.get(i).getNotes());
+           System.out.print("La nota media del alumno es: ");
+           System.out.println(media);
+        }
+        
     }
 
+    /**
+     * 
+     * Metode per retornar un vector amb objectes de tipus Alumne llegits d'un fitxer
+     */
     public static void lleixirFitxer() {
-        //Alumne alum;
+        Alumne alum;
         try {
             File myData = new File(DADES);
             Scanner lectura = new Scanner (myData);
@@ -41,10 +48,8 @@ class FitxerSequencial {
                     notes[j] = Float.parseFloat(data1[j]);
                 } 
 
-                Alumne alum = new Alumne(data[0], data[1], data[2], data[3],data[4], notes);
-                System.out.println(data1.length);
-                System.out.println(notes[2]);
-
+                alum = new Alumne(data[0], data[1], data[2], data[3],data[4], notes);
+                alumnes.add(alum);
                 i++;
             }
             lectura.close();
@@ -52,7 +57,5 @@ class FitxerSequencial {
             System.out.println("A sorgit un error.");
             e.printStackTrace();
         }
-        
-
     }
 }
