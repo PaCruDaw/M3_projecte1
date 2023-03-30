@@ -4,11 +4,11 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-class FitxerSequencial {
-    
+class FitxerSequencial {    
     //donem un nom constant al fitxer
     //afegim la ruta de forma relativa
     public static final String DADES = "fitxers/dades_alumnes.txt";
+    public static final String MITJANES = "fitxers/mitjanes_alumnes.txt";
     static final int N = 2; //number of notes found in the file 3
 
     //array dinamic s'objectes
@@ -16,41 +16,35 @@ class FitxerSequencial {
 
     public static void main(String[] args) {
         lleixirFitxer();
-        for (int i = 0; i < alumnes.size(); i++) {
-           float media = Estadistiques.media(alumnes.get(i).getNotes());
-           System.out.print("La nota media del alumno es: ");
-           System.out.println(media);
-        }
-        
+        //mostraMitjaPantalla();
+        llistarAprovatSuspes();
+        crearFitxerMitjanes();
     }
 
     /**
      * 
-     * Metode per retornar un vector amb objectes de tipus Alumne llegits d'un fitxer
+     * Read a file and create a dynamic vector of students
      */
     public static void lleixirFitxer() {
         Alumne alum;
         try {
             File myData = new File(DADES);
             Scanner lectura = new Scanner (myData);
-            int i= 0;
             while (lectura.hasNextLine()) {
                 String linea = lectura.nextLine();
                 String[] data = linea.split(" ");
 
                 //volem poder fer aquesta conversio ancara que afegim mes notes
                 String[] data1 = Arrays.copyOfRange(data,(data.length - (N+1)),data.length);
-                //OJO diference de C++ debe darse valor inicial
+
                 float [] notes = new float[data1.length];
     
-                //no podem utilitzar i esta dins el bucle, volem tipus float no string
-                for (int j = 0; j < data1.length; j++) {
-                    notes[j] = Float.parseFloat(data1[j]);
+                for (int i = 0; i < data1.length; i++) {
+                    notes[i] = Float.parseFloat(data1[i]);
                 } 
 
                 alum = new Alumne(data[0], data[1], data[2], data[3],data[4], notes);
                 alumnes.add(alum);
-                i++;
             }
             lectura.close();
         } catch (FileNotFoundException e) {
@@ -58,4 +52,52 @@ class FitxerSequencial {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Display the students and their average grade
+     */
+    public static void mostraMitjaPantalla () {
+        for (int i = 0; i < alumnes.size(); i++) {
+            float media = Estadistiques.media(alumnes.get(i).getNotes());
+            System.out.println("La nota media del alumne "+ alumnes.get(i).getName() +" "+ alumnes.get(i).getLastName() +" "
+                            + alumnes.get(i).getLastNameTwo() + " es: " + media);
+         }
+    }
+
+    /**
+     * Method that classifies students between passed and failed
+     */
+    public static void llistarAprovatSuspes () {
+        System.out.println("Els seguents alumnes han superat el curs:");
+        for (int i = 0; i < alumnes.size(); i++) {
+            float media = Estadistiques.media(alumnes.get(i).getNotes());
+            if (media > 5) {
+                System.out.println(alumnes.get(i).getName() +" "+ alumnes.get(i).getLastName() +" "
+                            + alumnes.get(i).getLastNameTwo() + " la seva mitja es: " + media);
+            }       
+        }
+        System.out.println("Els seguents alumnes no han superat el curs:");
+        for (int i = 0; i < alumnes.size(); i++) {
+            float media = Estadistiques.media(alumnes.get(i).getNotes());
+            if (media < 5) {
+                System.out.println(alumnes.get(i).getName() +" "+ alumnes.get(i).getLastName() +" "
+                            + alumnes.get(i).getLastNameTwo() + " la seva mitja es: " + media);
+            }       
+        }
+
+    }
+
+    public static void coneixerNotaMaxima () {
+
+    }
+
+    public static void crearFitxerMitjanes () {
+
+
+    }
+
+    public static void crearFitxerAprovatSuspes () {
+
+    }
+
 }

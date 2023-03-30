@@ -23,7 +23,7 @@ public class Alumne {
             this.notes = notes.clone();
     }
 
-    //constructor per defecte
+    //constructor 
     public Alumne() {
 
     }
