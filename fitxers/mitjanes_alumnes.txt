@@ -1,0 +1,4 @@
+La nota mitjana dels alumnes es:
+Paula Cruzado Escura: 7.0
+Claudia Cruzado Escura: 1.0
+Adrian De La Torre Segon: 8.0
