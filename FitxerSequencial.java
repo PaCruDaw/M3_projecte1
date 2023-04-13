@@ -5,6 +5,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 
 class FitxerSequencial {    
     //donem un nom constant al fitxer
@@ -25,7 +27,9 @@ class FitxerSequencial {
         //llistarAprovatSuspes();
         //crearFitxerMitjanes();
         //crearFitxerAprovatSuspes();
-        coneixerNotaMijanaMaxima ();
+        //coneixerNotaMijanaMaxima ();
+        ordenacioCognom(alumnes);
+
     }
 
     /**
@@ -132,7 +136,6 @@ class FitxerSequencial {
 
     }
 
-
     /**
      * Method that create a fife classifies students between passed and failed
      */
@@ -163,4 +166,16 @@ class FitxerSequencial {
         }
     }
 
+
+
+    public static void ordenacioCognom (ArrayList<Alumne> alum) {
+        alum.sort(Comparator.comparing(Alumne::getLastName)
+            .thenComparing(Alumne::getLastNameTwo).thenComparing(Alumne::getName)); 
+
+        for (int i = 0; i < alum.size(); i++) {
+            System.out.println(alum.get(i).getName() +" "+ alum.get(i).getLastName() +" "
+                            + alum.get(i).getLastNameTwo());
+         }       
+    }
+    
 }

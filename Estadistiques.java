@@ -41,10 +41,4 @@ public class Estadistiques {
         }
         return min_valor;
     }
-
-    public static void main (String[] args) {
-        float[] vec = {5,5,7};
-        media(vec); 
-    }
-
 }
