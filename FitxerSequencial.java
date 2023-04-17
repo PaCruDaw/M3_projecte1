@@ -5,7 +5,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Comparator;
 
 class FitxerSequencial {    
@@ -22,16 +21,53 @@ class FitxerSequencial {
     static ArrayList<Alumne> alumnes = new ArrayList<Alumne>();
 
     public static void main(String[] args) {
+    
         lleixirFitxer();
-        //mostraMitjaPantalla();
-        //llistarAprovatSuspes();
-        //crearFitxerMitjanes();
-        //crearFitxerAprovatSuspes();
-        //coneixerNotaMijanaMaxima ();
-        ordenacioCognom(alumnes);
-
+        String op;
+        do {
+            menu();
+            op = System.console().readLine();
+            switch (op) {
+                case "a":
+                    mostraMitjaPantalla();
+                    break;
+                case "b":
+                    llistarAprovatSuspes();
+                    break;
+                case "c":
+                    crearFitxerMitjanes();
+                    crearFitxerAprovatSuspes();
+                    break;
+                case "d":
+                    ordenacioCognom(alumnes);
+                    break;
+                case "e":
+                    coneixerNotaMijanaMaxima ();
+                    break;
+                case "s":
+                    op="s";
+                    break;
+                default:
+                    System.out.println("Introdueixca una opció valida");
+            }
+        } while (op !="s");
+            
     }
 
+    /**
+     * 
+     */
+    public static void menu() {
+        System.out.println("Introduix una opció del menú:\n"
+            + "a) Mostra la mitjana dels alumnes.\n"
+            + "b) Mostra els llistats d'aprovats i suspesos.\n"
+            + "c) Crear fitxers.\n"
+            + "d) Ordenar els alumnes per cognom amb la seva nota mitjana.\n"
+            + "e) Coneixer el alumne amb nota mitjana mes alta."
+        );
+    }
+
+   
     /**
      * 
      * Read a file and create a dynamic vector of students
@@ -167,15 +203,15 @@ class FitxerSequencial {
     }
 
 
-
     public static void ordenacioCognom (ArrayList<Alumne> alum) {
         alum.sort(Comparator.comparing(Alumne::getLastName)
             .thenComparing(Alumne::getLastNameTwo).thenComparing(Alumne::getName)); 
 
         for (int i = 0; i < alum.size(); i++) {
+            float media = Estadistiques.media(alum.get(i).getNotes());
             System.out.println(alum.get(i).getName() +" "+ alum.get(i).getLastName() +" "
-                            + alum.get(i).getLastNameTwo());
-         }       
+                            + alum.get(i).getLastNameTwo() + ": " + media );
+        }       
     }
     
 }
