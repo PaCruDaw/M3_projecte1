@@ -1,6 +1,8 @@
 Els seguents alumnes han superat el curs:
 Paula Cruzado Escura: 7.0
 Adrian De La Torre Segon: 8.0
+Vicente Albiol Sales: 5.3333335
 
 Els seguents alumnes no han superat el curs:
 Claudia Cruzado Escura: 1.0
+Ruben Albiol De La Torre: 4.3333335

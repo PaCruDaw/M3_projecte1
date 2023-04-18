@@ -2,3 +2,5 @@ La nota mitjana dels alumnes es:
 Paula Cruzado Escura: 7.0
 Claudia Cruzado Escura: 1.0
 Adrian De La Torre Segon: 8.0
+Vicente Albiol Sales: 5.3333335
+Ruben Albiol De La Torre: 4.3333335

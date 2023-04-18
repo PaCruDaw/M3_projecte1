@@ -50,20 +50,21 @@ class FitxerSequencial {
                 default:
                     System.out.println("Introdueixca una opció valida");
             }
-        } while (op !="s");
-            
+        } while (op !="s");            
     }
 
     /**
      * 
      */
     public static void menu() {
-        System.out.println("Introduix una opció del menú:\n"
-            + "a) Mostra la mitjana dels alumnes.\n"
-            + "b) Mostra els llistats d'aprovats i suspesos.\n"
-            + "c) Crear fitxers.\n"
-            + "d) Ordenar els alumnes per cognom amb la seva nota mitjana.\n"
-            + "e) Coneixer el alumne amb nota mitjana mes alta."
+        System.out.print("Menú de opcions:\n"
+            + "\ta) Mostra la mitjana dels alumnes.\n"
+            + "\tb) Mostra els llistats d'aprovats i suspesos.\n"
+            + "\tc) Crear fitxers.\n"
+            + "\td) Ordenar els alumnes per cognom amb la seva nota mitjana.\n"
+            + "\te) Coneixer el alumne amb nota mitjana mes alta.\n"
+            + "\ts) Sortir.\n"
+            + "Introdueix una opció del menú:"
         );
     }
 
@@ -106,7 +107,7 @@ class FitxerSequencial {
     public static void mostraMitjaPantalla () {
         for (int i = 0; i < alumnes.size(); i++) {
             float media = Estadistiques.media(alumnes.get(i).getNotes());
-            System.out.println("La nota media del alumne "+ alumnes.get(i).getName() +" "+ alumnes.get(i).getLastName() +" "
+            System.out.println("\tLa nota media del alumne "+ alumnes.get(i).getName() +" "+ alumnes.get(i).getLastName() +" "
                             + alumnes.get(i).getLastNameTwo() + " es: " + media);
          }
     }
@@ -119,7 +120,7 @@ class FitxerSequencial {
         for (int i = 0; i < alumnes.size(); i++) {
             float media = Estadistiques.media(alumnes.get(i).getNotes());
             if (media > 5) {
-                System.out.println(alumnes.get(i).getName() +" "+ alumnes.get(i).getLastName() +" "
+                System.out.println("\t" + alumnes.get(i).getName() + " " + alumnes.get(i).getLastName() + " "
                             + alumnes.get(i).getLastNameTwo() + ": " + media);
             }       
         }
@@ -127,7 +128,7 @@ class FitxerSequencial {
         for (int i = 0; i < alumnes.size(); i++) {
             float media = Estadistiques.media(alumnes.get(i).getNotes());
             if (media < 5) {
-                System.out.println(alumnes.get(i).getName() +" "+ alumnes.get(i).getLastName() +" "
+                System.out.println("\t" + alumnes.get(i).getName() +" "+ alumnes.get(i).getLastName() +" "
                             + alumnes.get(i).getLastNameTwo() + ": " + media);
             }       
         }
@@ -147,8 +148,8 @@ class FitxerSequencial {
                 max_med = media;
             }
         } 
-        System.out.println("El alumne en millor mitjana es: " + alumnes.get(alum).getName() 
-                    +" "+ alumnes.get(alum).getLastName() + " " + alumnes.get(alum).getLastNameTwo() + ": " + max_med);
+        System.out.println("\tEl alumne en millor mitjana es: " + alumnes.get(alum).getName() 
+                    +" "+ alumnes.get(alum).getLastName() + " " + alumnes.get(alum).getLastNameTwo() + " amb un " + max_med);
     }
 
     /**
@@ -209,7 +210,7 @@ class FitxerSequencial {
 
         for (int i = 0; i < alum.size(); i++) {
             float media = Estadistiques.media(alum.get(i).getNotes());
-            System.out.println(alum.get(i).getName() +" "+ alum.get(i).getLastName() +" "
+            System.out.println("\t" + alum.get(i).getName() +" "+ alum.get(i).getLastName() +" "
                             + alum.get(i).getLastNameTwo() + ": " + media );
         }       
     }
