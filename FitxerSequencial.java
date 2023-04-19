@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 
+/**
+ * @author Paula Cruzado Escura
+ */
 class FitxerSequencial {    
     //donem un nom constant al fitxer
     //afegim la ruta de forma relativa
@@ -17,7 +20,7 @@ class FitxerSequencial {
     //nombre de notes que hi han al fitxer -1 
     static final int N = 2; 
 
-    //array dinamic s'objectes
+    //array dinamic d'objectes
     static ArrayList<Alumne> alumnes = new ArrayList<Alumne>();
 
     public static void main(String[] args) {
@@ -54,7 +57,7 @@ class FitxerSequencial {
     }
 
     /**
-     * 
+     * Aplication menu
      */
     public static void menu() {
         System.out.print("Menú de opcions:\n"
@@ -70,7 +73,6 @@ class FitxerSequencial {
 
    
     /**
-     * 
      * Read a file and create a dynamic vector of students
      */
     public static void lleixirFitxer() {
@@ -119,7 +121,7 @@ class FitxerSequencial {
         System.out.println("Els seguents alumnes han superat el curs:");
         for (int i = 0; i < alumnes.size(); i++) {
             float media = Estadistiques.media(alumnes.get(i).getNotes());
-            if (media > 5) {
+            if (media >= 5) {
                 System.out.println("\t" + alumnes.get(i).getName() + " " + alumnes.get(i).getLastName() + " "
                             + alumnes.get(i).getLastNameTwo() + ": " + media);
             }       
@@ -203,7 +205,10 @@ class FitxerSequencial {
         }
     }
 
-
+    /**
+     * Sort students by their last name and first name
+     * @param alum dinamic array with students data
+     */
     public static void ordenacioCognom (ArrayList<Alumne> alum) {
         alum.sort(Comparator.comparing(Alumne::getLastName)
             .thenComparing(Alumne::getLastNameTwo).thenComparing(Alumne::getName)); 
