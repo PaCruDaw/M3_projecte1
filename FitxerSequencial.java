@@ -18,7 +18,7 @@ class FitxerSequencial {
     public static final String APROBSUSP = "fitxers/listat_clasificat.txt";
 
     //nombre de notes que hi han al fitxer -1 
-    static final int N = 2; 
+    static final int N = 3; 
 
     //array dinamic d'objectes
     static ArrayList<Alumne> alumnes = new ArrayList<Alumne>();

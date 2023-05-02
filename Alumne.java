@@ -50,8 +50,7 @@ public class Alumne {
     }
 
     public void setNotes (float[] notes) {
-        //this.notes = notes tindria la mateixa referencia en memoria, seria el mateix vector, volem duplicar
-        this.notes = notes.clone(); 
+        this.notes = notes; 
     }
 
     public String getId () {
